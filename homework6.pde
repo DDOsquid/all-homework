@@ -5,6 +5,8 @@ int maxSize=3000;
 
 ArrayList<Particle>particles=new ArrayList<Particle>();
 
+boolean savePDF;
+
 
 void setup(){
   colorMode(HSB);
@@ -32,6 +34,19 @@ void draw(){
    
    for(Particle p:particles)
    p.update();
+   if(savePDF){
+     beginRecord(PDF,"HOMEWORK.PDF");
+   }
+   if (savePDF){
+     endRecord();
+     savePDF=false;
+   }
+   
+   
+}
+
+void keyPressed(){
+  if(key=='q')savePDF=true;  
 }
 
 class Particle{
